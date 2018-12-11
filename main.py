@@ -48,7 +48,7 @@ while True:
                                 'name': s[drop_one(name_column)],
                                 'inn': str(s[drop_one(inn_column)]).replace('.0', ''),
                                 'address': s[drop_one(address_column)],
-                                'money': '{0:.2f}'.format(s[drop_one(money_column)])
+                                'money': str('{0:.2f}'.format(s[drop_one(money_column)]).replace('.', ','))
                                 }
 
                 doc = DocxTemplate(template_file)

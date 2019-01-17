@@ -47,7 +47,7 @@ while True:
                 money = s[drop_one(money_column)]
                 if s[drop_one(date_column)] < '2019-01-01 00:00:00':
                     nds_percent = 18
-                    nds_money = money * 0.18
+                    nds_money = round(money * 0.18, 2)
                 else:
                     nds_percent = 20
                     nds_money = round(money * 0.20, 2)

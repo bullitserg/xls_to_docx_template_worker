@@ -44,11 +44,21 @@ while True:
             for s in parsed_data:
                 s = [v.value for v in s]
 
+                money = s[drop_one(money_column)]
+                if s[drop_one(date_column)] < '2019-01-01 00:00:00':
+                    nds_percent = 18
+                    nds_money = money * 0.18
+                else:
+                    nds_percent = 20
+                    nds_money = round(money * 0.20, 2)
+
                 procedures_d = {'procedure_number': s[drop_one(procedure_number_column)],
                                 'name': s[drop_one(name_column)],
                                 'inn': str(s[drop_one(inn_column)]).replace('.0', ''),
                                 'address': s[drop_one(address_column)],
-                                'money': str('{0:.2f}'.format(s[drop_one(money_column)]).replace('.', ','))
+                                'money': str('{0:.2f}'.format(money).replace('.', ',')),
+                                'nds_percent': nds_percent,
+                                'nds_money': str('{0:.2f}'.format(nds_money).replace('.', ','))
                                 }
 
                 doc = DocxTemplate(template_file)
